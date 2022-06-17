@@ -1,0 +1,199 @@
+@import "../../../styles/common.scss";
+
+.btn-hamburger {
+  display: block;
+  position: relative;
+  display: block;
+  z-index: 100;
+  width: 25px;
+  height: 25px;
+  margin-left: auto;
+  &:before,
+  &:after,
+  span {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 2px;
+    top: 50%;
+    border-radius: 3px;
+    margin-top: -1px;
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    transition: none 0.3s ease 0.3s;
+    transition-property: transform, top, bottom, right, opacity;
+  }
+  &:before {
+    transform: translateY(-6px);
+  }
+  &:after {
+    transform: translateY(6px);
+  }
+  &.is-active {
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+    span {
+      opacity: 0;
+    }
+  }
+}
+
+.app-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  height: 65px;
+  color: #fff;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  background-color: #000;
+  @include breakpoint(phone) {
+    height: 100px;
+  }
+  .btn-hamburger {
+    &:before,
+    &:after,
+    span {
+      background-color: #fff;
+    }
+  }
+  .container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+  .app-logo {
+    color: #fff;
+  }
+  .app-header__btn-avatar {
+    display: none;
+    @include breakpoint(tablet-lg) {
+      display: block;
+    }
+  }
+  .app-header__btn-menu {
+    background: transparent;
+    border: none;
+    @include breakpoint(tablet-lg) {
+      display: none;
+    }
+  }
+  .app-header__actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    @include breakpoint(tablet-lg) {
+      margin-left: 0;
+    }
+    button {
+      margin-left: 15px;
+      @include breakpoint(tablet-lg) {
+        margin-left: 25px;
+      }
+    }
+    i {
+      color: #fff;
+      z-index: 10;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 18px;
+    }
+  }
+  .app-nav {
+    top: 0;
+    right: -250px;
+    width: 250px;
+    z-index: 9999;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    border-left: 1px solid #e5e5e5;
+    @include breakpoint(tablet-lg) {
+      position: relative;
+      height: auto;
+      right: 0;
+      width: auto;
+      border: none;
+      background-color: transparent;
+    }
+    .app-nav__btn {
+      padding: 13px 18px;
+      width: 100%;
+      font-size: 15px;
+      font-weight: 500;
+      text-align: left;
+      @include breakpoint(tablet-lg) {
+        display: none;
+      }
+    }
+    &.app-nav--open {
+      right: 0;
+    }
+    a {
+      font-size: 15px;
+      font-weight: 500;
+      width: 100%;
+      color: #000;
+      display: block;
+      text-align: left;
+      padding: 15px 18px;
+      @include breakpoint(tablet-lg) {
+        width: auto;
+        padding: 0;
+        color: #fff;
+        margin-right: 76px;
+        display: inline-block;
+        font-size: 14px;
+      }
+    }
+  }
+  &.app-header--fixed {
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #fff;
+    .btn-hamburger {
+      &:before,
+      &:after,
+      span {
+        background-color: #000;
+      }
+    }
+    a,
+    i {
+      color: #000;
+    }
+    button {
+      color: #000;
+      i {
+        color: #000;
+      }
+    }
+    .app-logo {
+      color: #000;
+    }
+  }
+  .search-form-wrapper {
+    &.search-form--active {
+      .search-form {
+        top: 0;
+        @include breakpoint(tablet-lg) {
+          top: auto;
+        }
+        input {
+          @include breakpoint(tablet-lg) {
+            border: 1px solid #ababab;
+          }
+        }
+      }
+    }
+  }
+}

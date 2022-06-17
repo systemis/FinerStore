@@ -1,0 +1,194 @@
+@import "../../../styles/common.scss";
+.page-intro {
+  position: relative;
+  .swiper-button-prev,
+  .swiper-button-next {
+    bottom: 20px;
+    top: auto;
+    transform: translateX(50%);
+    right: 14%;
+    left: auto;
+    width: 42px;
+    height: 42px;
+    z-index: 100;
+    font-size: 13px;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.12);
+    @include breakpoint(phone) {
+      width: 52px;
+      height: 52px;
+      bottom: 30px;
+      font-size: 17px;
+      display: flex;
+    }
+    @include breakpoint(tablet-lg) {
+      width: 72px;
+      height: 72px;
+      bottom: 30px;
+      font-size: 21px;
+      display: flex;
+    }
+    &:before {
+      color: #fff;
+      content: "\e80b";
+      font-family: "icons";
+    }
+    &:hover {
+      background: #fff;
+      &:before {
+        color: #000;
+      }
+    }
+  }
+  .swiper-button-next {
+    right: 20px;
+    @include breakpoint(phone) {
+      right: 7%;
+    }
+    &:before {
+      content: "\e811";
+    }
+  }
+  .swiper-pagination-progressbar {
+  }
+  .shop-data {
+    bottom: 0;
+    left: 0;
+    width: 80%;
+    z-index: 99;
+    display: none;
+    position: absolute;
+    padding: 36px 30px 30px 30px;
+    @include breakpoint(phone) {
+      display: block;
+    }
+    &:before {
+      background: #fff;
+      content: "";
+      left: 0;
+      bottom: 0;
+      top: 0;
+      width: 100%;
+      display: block;
+      z-index: 1;
+      border-radius: 0 70px 0 0;
+      position: absolute;
+    }
+    .shop-data__items {
+      width: 100%;
+      z-index: 10;
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+      li {
+        display: flex;
+        margin-left: 80px;
+        @include breakpoint(phone) {
+          display: block;
+          margin-left: 30px;
+        }
+        @include breakpoint(tablet-lg) {
+          margin-left: 80px;
+          display: flex;
+        }
+        i {
+          margin-right: 27px;
+          height: 39px;
+          width: 39px;
+          font-size: 13px;
+          flex-shrink: 0;
+          display: flex;
+          border-radius: 10px;
+          color: var(--color-orange);
+          background: var(--color-orange-light);
+          justify-content: center;
+          align-items: center;
+          @include breakpoint(phone) {
+            margin-bottom: 15px;
+          }
+          @include breakpoint(tablet-lg) {
+            margin-bottom: 0;
+          }
+        }
+        .data-item__content {
+          h4 {
+            font-size: 14px;
+            margin-bottom: 7px;
+          }
+          p {
+            font-size: 12px;
+            line-height: 135%;
+          }
+        }
+      }
+    }
+  }
+  .page-intro__slide {
+    height: 450px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #fafafa;
+    @include breakpoint(phone) {
+      height: 90vh;
+    }
+    &:before {
+      content: "";
+      left: 0;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    .container {
+      z-index: 10;
+      display: flex;
+      position: relative;
+      align-items: center;
+      height: 100%;
+    }
+    .intro_slide {
+      margin-top: auto;
+      margin-bottom: 40px;
+      @include breakpoint(phone) {
+        margin-bottom: 80px;
+        margin-top: 0;
+      }
+      h2 {
+        font-size: 36px;
+        color: #fff;
+        font-weight: 600;
+        line-height: 120%;
+        margin-bottom: 45px;
+        @include breakpoint(phone) {
+          font-size: 64px;
+          width: 600px;
+        }
+      }
+      .btn-shop {
+        display: flex;
+        color: #fff;
+        align-items: center;
+        i {
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          width: 40px;
+          height: 40px;
+          color: #fff;
+          font-size: 15px;
+          margin-right: 10px;
+          background-color: var(--color-orange);
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+}
