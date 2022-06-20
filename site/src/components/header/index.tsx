@@ -55,38 +55,40 @@ const Header = ({ isErrorPage }: HeaderType) => {
     })}>
       <div className={styles['container']}>
         <Link href="/">
-          <a><h1 className={styles['app-logo']}>
-            {/* <Logo /> */}
-            E-Shop</h1></a>
+          <a>
+            <h1 className={styles['app-logo']}>
+              Finner-Shop
+            </h1>
+          </a>
         </Link>
         <nav ref={navRef} className={classnames(styles['app-nav'], {
           [styles['app-nav--open']]: menuOpen
         })}>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+
           <Link href="/products">
             <a>Products</a>
           </Link>
-          <a href="#">Inspiration</a>
-          <a href="#">Rooms</a>
+
+          <Link href="/contact">
+            <a>Contact</a>
+          </Link>
+
           <button className={classnames(styles['app-nav__btn'])}><p>Account</p></button>
         </nav>
 
         <div className={styles['app-header__actions']}>
-          <button ref={searchRef} className={classnames(styles['search-form-wrapper'], {
-            [styles['search-form--active']]: searchOpen,
-          })}>
-            <form className={styles['search-form']}>
-              <i className="icon-cancel" onClick={() => setSearchOpen(!searchOpen)}></i>
-              <input type="text" name="search" placeholder="Enter the product you are looking for" />
-            </form>
-            <i onClick={() => setSearchOpen(!searchOpen)} className="icon-search"></i>
-          </button>
           <Link href="/cart">
             <button className="btn-cart">
-              <i className="icon-cart"></i>
+              <i className='bx bxs-cart' ></i>
             </button>
           </Link>
           <Link href="/login">
-            <button className={styles['app-header__btn-avatar']}><i className="icon-avatar"></i></button>
+            <button className={styles['app-header__btn-avatar']}>
+              <i className="bx bxs-user"></i>
+            </button>
           </Link>
           <button
             onClick={() => setMenuOpen(true)}

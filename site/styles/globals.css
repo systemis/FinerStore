@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,4 +17,59 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+button {
+  border: none;
+  background: transparent;
+}
+
+.container {
+  margin-top: 150px;
+}
+
+.newarrival {
+  background: green;
+  width: 50px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.col-md-7 h2 {
+  color: #555;
+}
+
+.price {
+  color: #fe980f;
+  font-size: 26px;
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+input {
+  border: 1px solid #ccc;
+  font-weight: bold;
+  height: 25px;
+  text-align: center;
+  width: 30px;
+}
+
+.col-md-7 select {
+  margin-left: 5px;
+}
+
+.col-md-7 a {
+  background: #e5345b;
+  color: white;
+  border-radius: 25px;
+  margin-left: 20px;
+}
+
+.col-md-7 h3 {
+  margin-top: 10px;
+}
+
+.col-md-7 .content_product {
+  width: 480px;
 }

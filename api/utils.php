@@ -1,6 +1,10 @@
 <?php
   require 'vendor/autoload.php';
 
+  function mongoObjectId($id) {
+    return new MongoDB\BSON\ObjectID($id);
+  }
+
   function convertDocument($document) {
     if ($document == null) {
       return null; 

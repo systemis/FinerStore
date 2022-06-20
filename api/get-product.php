@@ -1,8 +1,9 @@
 <?php 
 require 'vendor/autoload.php';
 include './database.php';
-include './product.php';
+include './models/product.php';
 include './utils.php';
+include './common.php';
 
 /**
 * This controller will get all product
