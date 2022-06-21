@@ -198,9 +198,23 @@ class ProductControl
     $this->collection = $db->product;
   }
 
+  function updateOne($id, $product)
+  {
+    $this->collection->updateOne(
+      ["_id" => mongoObjectId($id)],
+      ['$set' => [
+        "name" => $product->name,
+        "image" => $product->image,
+        "description" => $product->description,
+        "price" => $product->price,
+      ]]
+    );
+
+    return $this->findById($id);
+  }
+
   function insertOne($product)
   {
-    // logConsole("Insert product with name $product->name");
     $result = $this->collection->insertOne([
       "name" => $product->name,
       "price" => $product->price,
@@ -208,8 +222,7 @@ class ProductControl
       "description" => $product->description,
     ]);
 
-    echo "Inserted with Object ID '{$result->getInsertedId()}'";
-    return $result->getInsertedId();
+    return $this->findById($result->getInsertedId());
   }
 
   function findAll()

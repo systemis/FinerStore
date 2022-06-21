@@ -1,50 +1,125 @@
-<?php 
-require '../vendor/autoload.php';
-
-
-class User {
+<?php
+class User
+{
   public $name;
   public $username;
   public $email;
-  public $avatar; 
-  
-  function __construct($name, $username, $email, $avatar) {
-    $this->name = $name; 
-    $this->image = $username; 
-    $this->emaio = $email; 
+  public $avatar;
+  public $role;
+
+  function __construct($name, $username, $email, $avatar)
+  {
+    $this->name = $name;
+    $this->username = $username;
+    $this->email = $email;
     $this->avatar = $avatar;
+    $this->role = "USER::ROLE";
   }
 
-  function setName($name) {
+  function setName($name)
+  {
     $this->name = $name;
   }
 
-  function getName() {
+  function getName()
+  {
     return $this->name;
   }
 
-  function setImage($image) {
-    $this->image = $image;
+  function setAvatar($avatar)
+  {
+    $this->avatar = $avatar;
   }
 
-  function getImage() {
-    return $this->image; 
+  function getAvatar()
+  {
+    return $this->avatar;
   }
 
-  function setPrice($price) {
-    $this->price = $price;
+  function setEmail($email)
+  {
+    $this->email = $email;
   }
 
-  function getPrice() {
-    return $this->price; 
+  function getEmail()
+  {
+    return $this->email;
   }
 
-  function setDescription($description) {
-    $this->description = $description;
+  function setUsername($username)
+  {
+    $this->username = $username;
   }
 
-  function getDescription() {
-    return $this->description;
+  function getUsername()
+  {
+    return $this->username;
+  }
+
+  function setRole($role)
+  {
+    $this->role = $role;
+  }
+
+  function getRole()
+  {
+    return $this->role;
   }
 }
-?>
+
+
+class UserControl
+{
+  public $collection;
+  function __construct($db)
+  {
+    $this->collection = $db->user;
+  }
+
+  function updateOne($id, $user)
+  {
+    $this->collection->updateOne(
+      ["_id" => mongoObjectId($id)],
+      ['$set' => [
+        "name" => $user->name,
+        "username" => $user->username,
+        "email" => $user->email,
+        "avatar" => $user->avatar,
+        "role" => $user->role,
+      ]]
+    );
+
+    return $this->findById($id);
+  }
+
+  function insertOne($user)
+  {
+    $result = $this->collection->insertOne([
+      "name" => $user->name,
+      "username" => $user->username,
+      "email" => $user->email,
+      "avatar" => $user->avatar,
+      "role" => $user->role,
+    ]);
+
+    return $this->findById($result->getInsertedId());
+  }
+
+  function findAll()
+  {
+    $document = $this->collection->find();
+    return convertDocuments($document);
+  }
+
+  function findById($id)
+  {
+    $document = $this->collection->findOne(["_id" => mongoObjectId($id)]);
+    return convertDocument($document);
+  }
+
+  function findOneByUsername($username)
+  {
+    $document = $this->collection->findOne(["username" => $username]);
+    return convertDocument($document);
+  }
+}
