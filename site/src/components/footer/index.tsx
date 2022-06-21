@@ -8,8 +8,8 @@ const Footer: React.FC = () => {
           <div className="row mt-3">
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <h6 style={{ fontWeight: "800" }}>
-                <img src="logo.png" alt="site icon" style={{ width: "50px" }} />
-                <span className="ms-2" style={{ color: "black " }}>E</span>
+                {/* <img src="logo.png" alt="site icon" style={{ width: "50px" }} /> */}
+                <span className="ms-2" style={{ color: "black " }}>Finner</span>
                 -Shop
               </h6>
 
@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <hr />
-          <div className="copyright text-center">
+          <div className="copyright text-center mt-[20px]">
             <h4 style={{ opacity: "0.6" }}>Finner Shop - © 2022</h4>
           </div>
         </div>

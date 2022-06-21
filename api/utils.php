@@ -29,4 +29,3 @@
     $console = implode(',', $console);
     echo "<script>console.log('Console: " . $console . "' );</script>";
   }
-?>

@@ -59,17 +59,190 @@ input {
   margin-left: 5px;
 }
 
-.col-md-7 a {
-  background: #e5345b;
-  color: white;
-  border-radius: 25px;
-  margin-left: 20px;
-}
-
 .col-md-7 h3 {
   margin-top: 10px;
 }
 
 .col-md-7 .content_product {
   width: 480px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+
+:root {
+  --lg-font: 'Nanum Myeongjo', serif;
+}
+
+body {
+  font-family: var(--lg-font);
+}
+
+/*nav bar */
+.navbar-brand img {
+  display: block;
+  width: 26px;
+}
+
+.navbar {
+  border: 2px solid rgba(0, 0, 0, 0.05);
+
+}
+
+.navbar-brand span {
+  letter-spacing: 2px;
+  font-family: var(--lg-font);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.nav-item {
+  font-size: 15px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar-nav li a {
+  font-weight: 1000;
+}
+
+.navbar .btn {
+  font-size: 23px;
+}
+
+#special {
+  margin-top: 70px;
+
+}
+
+
+.special-img span {
+  top: 20px;
+  right: 20px;
+}
+
+.special-list .btn {
+  padding: 8px 20px !important;
+}
+
+.special-img img {
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.special-img:hover img {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+/* product content filter */
+
+.title h5 {
+  font-weight: 200;
+  margin-left: 8px;
+}
+
+.title span {
+  opacity: 0.2;
+}
+
+#special .product-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  margin-left: 8px;
+}
+
+.product-content h5 {
+  font-weight: 700;
+}
+
+.product-content h5 span {
+  opacity: 0.2;
+}
+
+.product-filter .form-group label {
+  font-weight: 1000;
+  font-size: 15px;
+}
+
+.product-filter .form-group:last-of-type {
+  margin-left: 30px;
+}
+
+#special .product-content .product-filter {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  border: none;
+  position: static;
+  margin-top: 20px;
+}
+
+.product-filter .form-group {
+  display: flex;
+  align-items: center;
+}
+
+.form-group span {
+  font-weight: 200;
+}
+
+.form-group select {
+  margin-left: 10px;
+  width: 98px;
+  height: 30px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.form-select option {
+  font-size: 15px;
+}
+
+.special-list .col-md-6 {
+  cursor: pointer;
+}
+
+/* footer */
+
+.description h6 {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.social-icon {
+  display: flex;
+  text-align: start;
+  margin-top: 20px;
+  font-size: 25px;
+}
+
+.social-icon a {
+  color: grey;
+  margin-right: 20px;
+}
+
+.social-icon ul li {
+  text-decoration: none;
+}
+
+.site-footer-container .row p a {
+  color: black;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.site-footer-container .row h6 {
+  font-size: 15px;
+  font-weight: 900;
+}
+
+@media(min-width: 992px) {
+  .nav-item {
+    border-bottom: none;
+  }
 }
