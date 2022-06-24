@@ -12,4 +12,3 @@ $id = htmlspecialchars($_GET["id"]);
 $productControl = new ProductControl($db);
 $document = $productControl->findById($id);
 echo json_encode($document);
-?>
