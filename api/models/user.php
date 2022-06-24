@@ -4,16 +4,19 @@ class User
   public $name;
   public $username;
   public $email;
+  public $password; 
   public $avatar;
   public $role;
 
-  function __construct($name, $username, $email, $avatar)
+  function __construct($name, $username, $email, $password, $avatar)
   {
     $this->name = $name;
     $this->username = $username;
     $this->email = $email;
     $this->avatar = $avatar;
-    $this->role = "USER::ROLE";
+    $this->password = $password; 
+    $this->role = "USER::ROLE::USER";
+    // $this->role = "USER::ROLE::ADMIN";
   }
 
   function setName($name)
@@ -65,6 +68,16 @@ class User
   {
     return $this->role;
   }
+
+  function setPassword($password) 
+  {
+    $this->password = $password; 
+  }
+
+  function getPassword() 
+  {
+    return $this->password; 
+  }
 }
 
 
@@ -92,6 +105,16 @@ class UserControl
     return $this->findById($id);
   }
 
+  function updatePassword($id, $newPassword)
+  {
+    $this->collection->updateOne(
+      ["_id" => mongoObjectId($id)], 
+      ['$set'=> [
+        "password" => $newPassword,
+      ]]
+    );
+  }
+
   function insertOne($user)
   {
     $result = $this->collection->insertOne([
@@ -99,6 +122,7 @@ class UserControl
       "username" => $user->username,
       "email" => $user->email,
       "avatar" => $user->avatar,
+      "password" => $user->password,
       "role" => $user->role,
     ]);
 

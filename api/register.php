@@ -14,6 +14,7 @@ $user = new User(
   $entityBody->name,
   $entityBody->username,
   $entityBody->email,
+  $entityBody->password, 
   $entityBody->avatar
 );
 

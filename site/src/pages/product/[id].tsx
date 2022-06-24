@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { Product } from "../../entities";
-import { request } from "../../provider/request";
 import Layout from "../../layouts/layout";
 import ProductsCarousel from "@/src/components/product-carousel";
+import { ProductAction } from "../../actions/product.action";
 
 const ProductDetailPage: NextPage = () => {
   const router = useRouter();
   const [product, setProduct] = useState<Product>();
   const [products, setProducts] = useState<Product[]>([]);
 
+  const productAction = new ProductAction();
+
   const handleGetData = async () => {
-    const products = await request<Product[]>("/get-products.php") || [];
+    const products = await productAction.getProductList();
     setProducts(products);
   }
 
@@ -22,10 +24,7 @@ const ProductDetailPage: NextPage = () => {
 
   useEffect(() => {
     (async () => {
-      const product = await request<Product>(
-        `/get-product-id.php/?id=${router.query.id}`,
-        { method: 'GET' },
-      );
+      const product = await productAction.getProductDetail(router.query.id);
       setProduct(product);
     })();
   }, [router.query]);

@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import useOnClickOutside from 'use-onclickoutside';
 import classnames from 'classnames';
+import { useApp } from "../../hooks/app.hook";
+import { UserRole } from "../../entities";
 import styles from './index.module.scss';
 
 type HeaderType = {
@@ -18,6 +20,8 @@ const Header = ({ isErrorPage }: HeaderType) => {
   const [searchOpen, setSearchOpen] = useState(false);
   const navRef = useRef(null);
   const searchRef = useRef(null);
+
+  const { user } = useApp();
 
   const headerClass = () => {
     if (window.pageYOffset === 0) {
@@ -80,11 +84,22 @@ const Header = ({ isErrorPage }: HeaderType) => {
         </nav>
 
         <div className={styles['app-header__actions']}>
-          <Link href="/cart">
-            <button className="btn-cart">
-              <i className='bx bxs-cart' ></i>
-            </button>
-          </Link>
+          {user?._id && (
+            <>
+              {user?.role === UserRole.admin && (
+                <Link href="/admin-managment">
+                  <button className="btn-admin-managment">
+                    <i className='bx bxs-ghost' ></i>
+                  </button>
+                </Link>
+              )}
+              <Link href="/shopping-cart">
+                <button className="btn-cart" onClick={() => router.push("/shopping-cart")}>
+                  <i className='bx bxs-cart' ></i>
+                </button>
+              </Link>
+            </>
+          )}
           <Link href="/login">
             <button className={styles['app-header__btn-avatar']}>
               <i className="bx bxs-user"></i>

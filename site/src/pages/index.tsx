@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Product } from "../entities";
-import { request } from '../provider/request';
 import Layout from '../layouts/layout';
 import PageIntro from '../components/page-info';
 import ProductsCarousel from '../components/product-carousel';
 import CustomerServiceInfo from "../components/customer-service";
+import { ProductAction } from "../actions/product.action";
 
 const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const productAction = new ProductAction();
 
   const handleGetData = async () => {
-    const products = await request<Product[]>("/get-products.php") || [];
+    const products = await productAction.getProductList();
     setProducts(products);
   }
 

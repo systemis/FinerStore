@@ -1,8 +1,8 @@
 <?php 
 require 'vendor/autoload.php';
+include './common.php';
 include './database.php';
 include './utils.php';
-include './common.php';
 include './models/product.php';
 
 /**

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -16,9 +17,10 @@
     "incremental": true, 
     "rootDir": ".",
     "baseUrl": ".",
+    "strictNullChecks": false,
     "paths": {
       "@/*": ["./*"],
-    }
+    },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "typings.d.ts"],
   "exclude": ["node_modules"]

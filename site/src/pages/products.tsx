@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { NextPage } from "next";
 import { Product } from "../entities";
-import { request } from "../provider/request";
 import ProductItem from "../components/product-item";
 import Layout from "../layouts/layout";
+import { ProductAction } from "../actions/product.action";
 
 const ProductsListPage: NextPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const productAction = new ProductAction();
 
   const handleGetData = async () => {
-    const products = await request<Product[]>("/get-products.php") || [];
+    const products = await productAction.getProductList();
     setProducts(products);
   }
 
