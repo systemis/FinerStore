@@ -23,6 +23,6 @@ export class StorageProvider {
   deleteItem(
     key: string
   ): void {
-    this.storageInstance.deleteItem(this.prefix+key);
+    this.storageInstance.removeItem(this.prefix+key);
   }
 }

@@ -38,4 +38,10 @@ export class AuthAction extends BaseAction {
     this.storageProvider.setItem(this.userKey, JSON.stringify(signUpResponse));
     return signUpResponse; 
   }
+
+  logout(): void {
+    this.storageProvider.deleteItem(this.authKey);
+    this.storageProvider.deleteItem(this.userKey);
+    window.location.href = "/login";
+  }
 }

@@ -98,13 +98,13 @@ const Header = ({ isErrorPage }: HeaderType) => {
                   <i className='bx bxs-cart' ></i>
                 </button>
               </Link>
+            <Link href="/profile">
+              <button className={styles['app-header__btn-avatar']}>
+                <i className="bx bxs-user"></i>
+              </button>
+            </Link>
             </>
           )}
-          <Link href="/login">
-            <button className={styles['app-header__btn-avatar']}>
-              <i className="bx bxs-user"></i>
-            </button>
-          </Link>
           <button
             onClick={() => setMenuOpen(true)}
             className={styles['app-header__btn-menu']}>
