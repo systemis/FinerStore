@@ -4,6 +4,10 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head';
 import { AppProvider } from "../hooks/app.hook";
 
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div>
@@ -21,6 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           />
         </Head>
         <Component {...pageProps} />
+        <ToastContainer />
       </AppProvider>
     </div>
   )

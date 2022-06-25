@@ -6,7 +6,7 @@ export enum UserRole {
 export interface Product {
   _id: { $oid: string },
   name: string;
-  price: string;
+  price: number;
   image: string;
   description: string;
 }; 

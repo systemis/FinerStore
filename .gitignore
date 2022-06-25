@@ -37,3 +37,5 @@ yarn-error.log*
 *.tsbuildinfo
 
 /site/.next/static/webpack/*
+
+/site/.next/*
