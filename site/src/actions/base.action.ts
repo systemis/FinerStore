@@ -7,6 +7,8 @@ export class BaseAction {
 
   protected readonly userKey: string = "USER_INFO";
 
+  protected readonly cardKey: string = "CARD";
+
   protected readonly storageProvider: StorageProvider;
 
   protected readonly networkProvider: NetworkProvider;

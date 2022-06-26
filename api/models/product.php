@@ -225,6 +225,15 @@ class ProductControl
     return $this->findById($result->getInsertedId());
   }
 
+  function deleteOne($id) {
+    $this->collection->deleteOne(
+    [
+      ["_id" => mongoObjectId($id)],
+    ]);
+
+    return true;
+  }
+
   function findAll()
   {
     $document = $this->collection->find();

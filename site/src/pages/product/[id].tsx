@@ -5,17 +5,33 @@ import { Product } from "../../entities";
 import Layout from "../../layouts/layout";
 import ProductsCarousel from "@/src/components/product-carousel";
 import { ProductAction } from "../../actions/product.action";
+import { CartAction } from "../../actions/cart.action";
+import { toast } from "react-toastify";
 
 const ProductDetailPage: NextPage = () => {
   const router = useRouter();
   const [product, setProduct] = useState<Product>();
   const [products, setProducts] = useState<Product[]>([]);
+  const [quantity, setQuantity] = useState<number>(1);
 
   const productAction = new ProductAction();
+  const cartAction = new CartAction(); 
 
   const handleGetData = async () => {
     const products = await productAction.getProductList();
     setProducts(products);
+  }
+
+  const handleAddToCard = async () => {
+    if (!quantity) {
+      return;
+    }
+
+    await cartAction.addProdutCard({
+      productId: product?._id?.$oid,
+      quantity,
+    });
+    toast.success("Product added successfully");
   }
 
   useEffect(() => {
@@ -61,7 +77,13 @@ const ProductDetailPage: NextPage = () => {
                 Team it with a pair of shorts for your morning workout or a denims for an evening out with the guys.
               </p>
               <p className="mt-[20px] text-[14px] font-[100]">Quantity:</p>
-              <input type="text" value="1" className="rounded-[3px] w-[50px] py-[10px] border-[gray] border-solid border-[1px] mt-[5px]" style={{ marginLeft: 0 }} />
+              <input 
+                type="number" 
+                value={quantity} 
+                className="rounded-[3px] w-[50px] py-[10px] border-[gray] border-solid border-[1px] mt-[5px]" 
+                style={{ marginLeft: 0 }} 
+                onChange={e => setQuantity(parseFloat(e.target.value))}
+              />
               <br />
               <p className="mt-[20px] text-[14px] font-[100]">Size:</p>
               <select className="rounded-[20px] px-[15px] py-[9px] border-[gray] border-solid border-[1px] text-[14px] mt-[5px]" style={{ marginLeft: 0 }}>
@@ -72,11 +94,12 @@ const ProductDetailPage: NextPage = () => {
                 <option>Medium</option>
                 <option>Small</option>
               </select>
-              <span className="rounded-[20px] px-[15px] py-[9px] bg-[#fbb03b] ml-[20px]">
-                <a>
-                  Add To Cart
-                </a>
-              </span>
+              <button 
+                className="rounded-[20px] px-[15px] py-[9px] bg-[#fbb03b] ml-[20px]"
+                onClick={() => handleAddToCard()}
+              >
+                Add To Cart
+              </button>
             </div>
           </div>
         </div>

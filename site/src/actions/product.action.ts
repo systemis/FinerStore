@@ -2,6 +2,7 @@ import { BaseAction } from "./base.action";
 import { Product } from "../entities/";
 import { AddProductDto } from "../dto/add-product.dto";
 import { EditProductDto } from "../dto/edit-product.dto";
+import { DeleteProductDto } from "../dto/delete-product.dto";
 
 export class ProductAction extends BaseAction {
   async getProductList(): Promise<Product[] | undefined> {
@@ -40,6 +41,17 @@ export class ProductAction extends BaseAction {
       `/update-product.php`, {
         method: "POST",
         body: editProductDto,
+      }
+    );
+  }
+
+  async deleteProduct(
+    deleteProductDto: DeleteProductDto
+  ): Promise<Product | undefined> {
+    return this.networkProvider.request<Product>(
+      `/delete-product.php`, {
+        method: "POST",
+        body: deleteProductDto,
       }
     );
   }
