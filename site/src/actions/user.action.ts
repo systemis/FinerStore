@@ -12,4 +12,14 @@ export class UserAction extends BaseAction {
       }
     )
   }
+
+  async getUser(id: string): Promise<User | undefined> {
+    const userId = this.storageProvider.getItem(this.authKey);
+    if (!userId) return undefined;
+    return this.networkProvider.request<User>(
+      `/get-user-id.php?id=${id}`, {
+        method: "GET",
+      }
+    )
+  }
 }

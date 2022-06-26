@@ -74,8 +74,13 @@ const AdminManagmentPage: NextPage = () => {
         </div>
       </div>
       <div className="fixed right-0 bottom-0 flex p-[20px] pb-[15px]" onClick={() => router.push("/admin-managment/add-product")}>
-        <button className="bg-[#ffaf37] p-[20px] rounded-[50%]">
+        <button className="bg-[#ffaf37] p-[20px] rounded-[50%] text-[25px] pb-[10px] ">
           <i className='bx bxs-add-to-queue' ></i>
+        </button>
+      </div>
+      <div className="fixed right-[0] bottom-[80px] flex p-[20px] text-[25px]" onClick={() => router.push("/admin-managment/order-tracking")}>
+        <button className="bg-[#69ffca] p-[20px] pb-[10px] rounded-[50%]">
+          <i className='bx bxs-store' ></i>
         </button>
       </div>
     </Layout>

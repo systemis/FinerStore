@@ -17,7 +17,6 @@ const Header = ({ isErrorPage }: HeaderType) => {
 
   const [onTop, setOnTop] = useState((!arrayPaths.includes(router.pathname) || isErrorPage) ? false : true);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
   const navRef = useRef(null);
   const searchRef = useRef(null);
 
@@ -46,12 +45,7 @@ const Header = ({ isErrorPage }: HeaderType) => {
     setMenuOpen(false);
   }
 
-  const closeSearch = () => {
-    setSearchOpen(false);
-  }
-
   useOnClickOutside(navRef, closeMenu);
-  useOnClickOutside(searchRef, closeSearch);
 
   return (
     <header className={classnames(styles['app-header'], {

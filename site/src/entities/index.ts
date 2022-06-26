@@ -24,3 +24,31 @@ export interface CardItem {
   productId: string; 
   quantity: number; 
 };
+
+export interface Order {
+  _id: { $oid: string };
+  userId: string; 
+  productIds: string[]; 
+  quantities: number[]; 
+  address: string; 
+  phoneNumber: string; 
+};
+
+export interface CartItem {
+  product: Product;
+  quantity: number;
+};
+
+export interface OrderInfoDetail {
+  details: CartItem[], 
+  info: Order, 
+  user: User,
+};
+
+export interface OrderRow {
+  _id: string; 
+  user: User; 
+  phoneNumber: string; 
+  address: string; 
+  totalPrice: number;
+};

@@ -1,37 +1,19 @@
 import React, { useEffect, useState, useMemo } from "react";
-import Layout from "../layouts/layout";
-import { CartAction } from "../actions/cart.action";
-import { Product } from "../entities";
-import { useApp } from "../hooks/app.hook";
+import { NextPage } from "next";
+import { useRouter } from "next/router";
+import { Product } from "../../../entities";
+import Layout from "../../../layouts/layout";
+import { CartAction } from "../../../actions/cart.action";
 import { toast } from "react-toastify";
+import { useApp } from "../../../hooks/app.hook";
 
-const ShoppingCart: React.FC = () => {
+const OrderTrackingDetail: NextPage = () => {
+  const router = useRouter();
   const cartAction = new CartAction();
   const [cartInfo, setCartInfo] = useState<{ product: Product, quantity: number }[]>();
   const [address, setAddress] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const { user } = useApp();
-
-  const handleGetCartInfo = async () => {
-    const cardInfo = await cartAction.getCardInfo();
-    setCartInfo(cardInfo);
-  }
-
-  const handleChangeQuantity = async (
-    _id: string,
-    amount: number
-  ) => {
-    console.log("change quantities", _id, amount);
-    await cartAction.changeProductQuantity(_id, amount);
-    await handleGetCartInfo();
-  }
-
-  const handleDeleteItem = async (
-    _id: string
-  ) => {
-    await cartAction.deleteProductCard(_id);
-    handleGetCartInfo();
-  }
 
   const totalAmount = useMemo(() => {
     let total = 0.
@@ -57,9 +39,13 @@ const ShoppingCart: React.FC = () => {
     }
   };
 
+
   useEffect(() => {
-    handleGetCartInfo();
-  }, []);
+    (async () => {
+      const data = await cartAction.getOrder(router?.query?.id as string);
+      setCartInfo(data.details);
+    })();
+  }, [router.asPath]);
 
   return (
     <Layout>
@@ -87,27 +73,14 @@ const ShoppingCart: React.FC = () => {
                       <div className="row text-muted">{item?.product?.name}</div>
                     </div>
                     <div className="col-2">
-                      <button
-                        onClick={() => handleChangeQuantity(item?.product?._id?.$oid, -1)}
-                        className="mr-[2x]">
-                        -
-                      </button>
                       <span className="px-[10px]">
                         {item?.quantity}
                       </span>
-                      <button
-                        onClick={() => handleChangeQuantity(item?.product?._id?.$oid, 1)}
-                        className="ml-[2x]">
-                        +
-                      </button>
                     </div>
                     <div className="col flow-root items-center">
                       <span className="float-left">
                         $ {item?.product?.price * item?.quantity}
                       </span>
-                      <button onClick={() => handleDeleteItem(item?.product?._id?.$oid)}>
-                        <span className='bx bx-x float-right mt-[2px]'></span>
-                      </button>
                     </div>
                   </div>
                 ))}
@@ -165,20 +138,12 @@ const ShoppingCart: React.FC = () => {
                 </div>
                 <div className="col text-right">$ {totalAmount}</div>
               </div>
-              <button 
-                onClick={(e) => {
-                  e.preventDefault();  
-                  handleCheckout();
-                }}
-                className="btn text-center py-[8px] text-center bg-black text-white w-full mt-[20px] rounded-[0]">
-                Checkout
-              </button>
             </div>
           </div>
         </div>
       </div>
     </Layout>
   );
-};
+}
 
-export default ShoppingCart;
+export default OrderTrackingDetail;

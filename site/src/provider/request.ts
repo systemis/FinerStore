@@ -1,11 +1,9 @@
 import axios from 'axios';
-
 export interface RequestPayload {
   method?: 'GET' | 'POST';
   body?: any;
   params?: any;
 }
-
 export class NetworkProvider {
   async request<T>(
     url: string, 
