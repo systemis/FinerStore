@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { Product } from "../../../entities";
+import { Product, OrderInfoDetail } from "../../../entities";
 import Layout from "../../../layouts/layout";
 import { CartAction } from "../../../actions/cart.action";
 import { toast } from "react-toastify";
@@ -11,6 +11,7 @@ const OrderTrackingDetail: NextPage = () => {
   const router = useRouter();
   const cartAction = new CartAction();
   const [cartInfo, setCartInfo] = useState<{ product: Product, quantity: number }[]>();
+  const [orderInfo, setOrderInfo] = useState<OrderInfoDetail>();
   const [address, setAddress] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const { user } = useApp();
@@ -44,6 +45,7 @@ const OrderTrackingDetail: NextPage = () => {
     (async () => {
       const data = await cartAction.getOrder(router?.query?.id as string);
       setCartInfo(data.details);
+      setOrderInfo(data);
     })();
   }, [router.asPath]);
 
@@ -109,13 +111,35 @@ const OrderTrackingDetail: NextPage = () => {
                   <option className="text-muted">Standard-Delivery- $5.00</option>
                 </select>
                 <p className="mt-[20px] font-bold">
+                  Fullname
+                </p>
+                <input
+                  id="code"
+                  value={orderInfo?.user?.name}
+                  className="w-full px-[5px] py-[7px] mt-[10px] text-start max-w-[250px]"
+                />
+                <p className="mt-[20px] font-bold">
+                  Email
+                </p>
+                <input
+                  id="code"
+                  value={orderInfo?.user?.email}
+                  className="w-full px-[5px] py-[7px] mt-[10px] text-start max-w-[250px]"
+                />
+                <p className="mt-[20px] font-bold">
+                  Username
+                </p>
+                <input
+                  id="code"
+                  value={orderInfo?.user?.username}
+                  className="w-full px-[5px] py-[7px] mt-[10px] text-start max-w-[250px]"
+                />
+                <p className="mt-[20px] font-bold">
                   Address
                 </p>
                 <input
                   id="code"
-                  placeholder="Enter your address"
-                  value={address}
-                  onChange={e => setAddress(e.target.value)}
+                  value={orderInfo?.info?.address}
                   className="w-full px-[5px] py-[7px] mt-[10px] text-start max-w-[250px]"
                 />
                 <p className="mt-[20px] font-bold">
@@ -124,8 +148,7 @@ const OrderTrackingDetail: NextPage = () => {
                 <input
                   id="code"
                   placeholder="Enter your phone number"
-                  value={phoneNumber}
-                  onChange={e => setPhoneNumber(e.target.value)}
+                  value={orderInfo?.info?.phoneNumber}
                   className="w-full px-[5px] py-[7px] mt-[10px] text-start max-w-[250px]"
                 />
               </form>
