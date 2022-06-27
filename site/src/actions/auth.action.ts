@@ -8,13 +8,13 @@ export class AuthAction extends BaseAction {
   async login(loginDto: LoginDto): Promise<LoginResponse | undefined> {
     const loginResponse = await this.networkProvider.request<LoginResponse>(
       `/login.php`, {
-        method: "POST",
-        body: loginDto
-      }
+      method: "POST",
+      body: loginDto
+    }
     );
 
     if (!loginResponse?._id) {
-      return undefined; 
+      return undefined;
     }
 
     this.storageProvider.setItem(this.authKey, loginResponse?._id.$oid);
@@ -22,13 +22,15 @@ export class AuthAction extends BaseAction {
     return loginResponse;
   }
 
-  async signUp(signUpDto: SignUpDto): Promise<SignUpResponse | undefined> {
+  async signUp(
+    signUpDto: SignUpDto
+  ): Promise<SignUpResponse | undefined> {
     const signUpResponse = await this.networkProvider.request<SignUpResponse>(
-      `/sign-up.php`, {
-        method: "POST",
-        body: signUpDto,
-      }
-    ); 
+      `/register.php`, {
+      method: "POST",
+      body: { ...signUpDto, avatar: "https://boringavatars.com/?ref=onepagelove" },
+    }
+    );
 
     if (!signUpResponse?._id) {
       return undefined;
@@ -36,7 +38,7 @@ export class AuthAction extends BaseAction {
 
     this.storageProvider.setItem(this.authKey, signUpResponse?._id.$oid);
     this.storageProvider.setItem(this.userKey, JSON.stringify(signUpResponse));
-    return signUpResponse; 
+    return signUpResponse;
   }
 
   logout(): void {

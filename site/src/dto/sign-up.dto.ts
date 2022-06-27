@@ -3,4 +3,5 @@ export interface SignUpDto {
   name: string; 
   email: string; 
   password: string;
+  avatar?: string | "https://boringavatars.com/?ref=onepagelove";
 }

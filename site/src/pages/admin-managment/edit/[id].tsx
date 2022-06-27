@@ -45,7 +45,7 @@ const ProductDetailPage: NextPage = () => {
 
   useEffect(() => {
     (async () => {
-      const product = await productAction.getProductDetail(router?.query?.id);
+      const product = await productAction.getProductDetail(router?.query?.id as string);
       if (product?.name) {
         setProduct(product);
         setName(product.name);

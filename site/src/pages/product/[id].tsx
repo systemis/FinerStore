@@ -7,15 +7,17 @@ import ProductsCarousel from "@/src/components/product-carousel";
 import { ProductAction } from "../../actions/product.action";
 import { CartAction } from "../../actions/cart.action";
 import { toast } from "react-toastify";
+import classnames from "classnames";
 
 const ProductDetailPage: NextPage = () => {
   const router = useRouter();
   const [product, setProduct] = useState<Product>();
   const [products, setProducts] = useState<Product[]>([]);
   const [quantity, setQuantity] = useState<number>(1);
+  const [productSize, setProductSize] = useState<string>("Small");
 
   const productAction = new ProductAction();
-  const cartAction = new CartAction(); 
+  const cartAction = new CartAction();
 
   const handleGetData = async () => {
     const products = await productAction.getProductList();
@@ -40,7 +42,7 @@ const ProductDetailPage: NextPage = () => {
 
   useEffect(() => {
     (async () => {
-      const product = await productAction.getProductDetail(router?.query?.id);
+      const product = await productAction.getProductDetail(router?.query?.id as string);
       setProduct(product);
     })();
   }, [router.query]);
@@ -66,39 +68,51 @@ const ProductDetailPage: NextPage = () => {
               </a>
             </div>
           </div>
-          <div className="col-md-7 md:pl-[35px] md:mt-0 mt-[30px]">
-            <p className="newarrival text-center">New</p>
-            <p className="mt-[10px] text-[25px] font-bold">{product?.name}</p>
+          <div className="col-md-7 md:pl-[35px] md:mt-0 mt-[0px]">
+            <p className="mt-[10px] text-[25px] font-bold" style={{ fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif' }}>
+              {product?.name}
+            </p>
             <p className="text-[14px] font-[100]">Product ID: {product?._id?.$oid?.slice(product?._id?.$oid?.length - 3)}</p>
-            <p className="text-red text-[red] text-[25px]">${product?.price}</p>
+            <p className="text-red text-[#000] text-[25px]">${product?.price}</p>
             <div className="mt-[20px]">
-              <p className="text-[14px] font-[100]">Product detail: </p>
               <p className="content_product"> Give your summer wardrobe a style upgrade with the HRX Men's Active T-Shirt.
                 Team it with a pair of shorts for your morning workout or a denims for an evening out with the guys.
               </p>
-              <p className="mt-[20px] text-[14px] font-[100]">Quantity:</p>
-              <input 
-                type="number" 
-                value={quantity} 
-                className="rounded-[3px] w-[50px] py-[10px] border-[gray] border-solid border-[1px] mt-[5px]" 
-                style={{ marginLeft: 0 }} 
-                onChange={e => setQuantity(parseFloat(e.target.value))}
-              />
+              <div className="pt-[20px]">
+                <span className="mt-[20px] text-[14px] font-[100] mr-[10px]">Quantity:</span>
+                <input
+                  className="rounded-[3px] w-[50px] py-[10px] border-[gray] border-solid border-[1px] mt-[5px]"
+                  type="number"
+                  value={quantity}
+                  style={{ marginLeft: 0 }}
+                  onChange={e => setQuantity(parseFloat(e.target.value))}
+                />
+              </div>
               <br />
-              <p className="mt-[20px] text-[14px] font-[100]">Size:</p>
-              <select className="rounded-[20px] px-[15px] py-[9px] border-[gray] border-solid border-[1px] text-[14px] mt-[5px]" style={{ marginLeft: 0 }}>
-                <option>Choose Size</option>
-                <option>XXL</option>
-                <option>XL</option>
-                <option>Large</option>
-                <option>Medium</option>
-                <option>Small</option>
-              </select>
-              <button 
-                className="rounded-[20px] px-[15px] py-[9px] bg-[#fbb03b] ml-[20px]"
+              {/* <p className="mt-[20px] text-[14px] font-[100]">Size:</p> */}
+              <div className="grid grid-cols-3 max-w-[80%]">
+                {["Small", "Medium", "Large", "XL", "XXL"].map((item, index) => (
+                  <div className="py-[10px] pr-[10px]" key={"size-item-" + index}>
+                    <div
+                      onClick={() => setProductSize(item)}
+                      className={classnames("p-[16px] rounded-[3px] cursor-pointer", { "border": productSize !== item })}
+                      {...(productSize === item && "green" && {
+                        style: {
+                          border: "1px solid green"
+                        }
+                      })}>
+                      <p className="text-center">
+                        {item}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <button
+                className="rounded-[25px] px-[15px] py-[10px] bg-black mt-[10px] min-w-[150px]"
                 onClick={() => handleAddToCard()}
               >
-                Add To Cart
+                <p className="text-white">Add To Cart</p>
               </button>
             </div>
           </div>
