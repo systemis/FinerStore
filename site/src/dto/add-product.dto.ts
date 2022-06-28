@@ -3,4 +3,5 @@ export interface AddProductDto {
   image: string; 
   description: string; 
   price: number; 
+  size: string[]; 
 }

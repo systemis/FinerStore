@@ -24,21 +24,21 @@ const OrderTrackingDetail: NextPage = () => {
     return total;
   }, [cartInfo]);
 
-  const handleCheckout = async () => {
-    if (!user._id.$oid || !address || !phoneNumber) {
-      return; 
-    }
+  // const handleCheckout = async () => {
+  //   if (!user._id.$oid || !address || !phoneNumber) {
+  //     return; 
+  //   }
 
-    const order = await cartAction.submitCard({
-      userId: user?._id.$oid,
-      address,
-      phoneNumber, 
-    });
+  //   const order = await cartAction.submitCard({
+  //     userId: user?._id.$oid,
+  //     address,
+  //     phoneNumber, 
+  //   });
 
-    if (order) {
-      toast.success("Order added successfully");
-    }
-  };
+  //   if (order) {
+  //     toast.success("Order added successfully");
+  //   }
+  // };
 
 
   useEffect(() => {

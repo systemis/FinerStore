@@ -3,12 +3,21 @@ import { NextPage } from "next";
 import Layout from "../../layouts/layout";
 import { ProductAction } from "../../actions/product.action";
 import { toast } from "react-toastify";
+import Select from 'react-select';
+
+const sizeOptions = [
+  { label: "Small", value: "Small" },
+  { label: "Medium", value: "Medium" },
+  { label: "Large", value: "Large" },
+  { label: "XL", value: "XL" },
+  { label: "XXL", value: "XXL" }];
 
 const AddProdutPage: NextPage = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const [size, setSize] = useState<string[]>(sizeOptions.map((item => item.value)));
 
   const productAction = new ProductAction();
 
@@ -19,10 +28,11 @@ const AddProdutPage: NextPage = () => {
     }
 
     const product = await productAction.addProduct({
-      name, 
-      price, 
-      description, 
-      image, 
+      name,
+      price,
+      description,
+      image,
+      size,
     });
 
     if (product?._id) {
@@ -41,7 +51,7 @@ const AddProdutPage: NextPage = () => {
           <div
             className="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
             <div className="px-[20px]">
-              <img src={image} className="rounded-[10px]" alt=""/>
+              <img src={image} className="rounded-[10px]" alt="" />
             </div>
             <div className="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
             <div className="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
@@ -54,7 +64,7 @@ const AddProdutPage: NextPage = () => {
               <p className="text-sm font-normal text-gray-600 mb-7">Welcome Back, want to add more product ?</p>
               <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4 md:w-[350px] w-[250px]">
                 <i className='bx bx-rename' ></i>
-                <input className="pl-2 outline-none border-none w-full text-start" type="text" name="" id="" placeholder="Name"  value={name} onChange={e => setName(e.target.value)} />
+                <input className="pl-2 outline-none border-none w-full text-start" type="text" name="" id="" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
               </div>
               <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
                 <i className='bx bxs-image' ></i>
@@ -62,15 +72,26 @@ const AddProdutPage: NextPage = () => {
               </div>
               <div className="flex border-2 py-2 px-3 rounded-2xl mb-4">
                 <i className='bx bx-text mt-[5px]' ></i>
-                <textarea className="pl-2 outline-none border-none w-full"  name="" id="" placeholder="description"  value={description} onChange={e => setDescription(e.target.value)} />
+                <textarea className="pl-2 outline-none border-none w-full" name="" id="" placeholder="description" value={description} onChange={e => setDescription(e.target.value)} />
               </div>
               <div className="flex items-center border-2 py-2 px-3 rounded-2xl">
                 <i className='bx bxs-purchase-tag-alt' ></i>
-                <input className="pl-2 outline-none border-none w-full text-start" type="number" name="" id="" placeholder="Price" value={price} onChange={e => setPrice(parseFloat(e.target.value))}/>
+                <input className="pl-2 outline-none border-none w-full text-start" type="number" name="" id="" placeholder="Price" value={price} onChange={e => setPrice(parseFloat(e.target.value))} />
               </div>
-              <button 
+              <div className="flex items-center border-2 py-2 px-3 rounded-2xl mt-[20px]">
+                <Select
+                  defaultValue={sizeOptions}
+                  isMulti
+                  name="colors"
+                  options={sizeOptions}
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                  onChange={value => setSize(value.map((values) => values.value))}
+                />
+              </div>
+              <button
                 className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
-                type="submit" 
+                type="submit"
                 onClick={(e) => {
                   e.preventDefault();
                   console.log("request to add product");

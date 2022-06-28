@@ -1,10 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { Product } from "../../../entities";
 import Layout from "../../../layouts/layout";
 import { ProductAction } from "../../../actions/product.action";
 import { toast } from "react-toastify";
+import Select from 'react-select';
+
+
+const sizeOptions = [
+  { label: "Small", value: "Small" },
+  { label: "Medium", value: "Medium" },
+  { label: "Large", value: "Large" },
+  { label: "XL", value: "XL" },
+  { label: "XXL", value: "XXL" }];
+
 
 const ProductDetailPage: NextPage = () => {
   const router = useRouter();
@@ -13,6 +23,8 @@ const ProductDetailPage: NextPage = () => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [product, setProduct] = useState<Product>();
+  const [size, setSize] = useState<string[]>(sizeOptions.map((item => item.value)));
+  const [defaultSize, setDefaultSize] = useState([]);
 
   const productAction = new ProductAction();
 
@@ -29,6 +41,7 @@ const ProductDetailPage: NextPage = () => {
       price,
       description,
       image,
+      size,
     });
 
     if (_product?._id) {
@@ -52,9 +65,13 @@ const ProductDetailPage: NextPage = () => {
         setDescription(product.description);
         setImage(product.image);
         setPrice(product.price);
+        setSize(product.size || []);
+        setDefaultSize(sizeOptions.filter(item => product.size.indexOf(item.value) >= 0));
       }
     })();
   }, [router.query]);
+
+  const _defaultSize = useMemo(() => defaultSize, [defaultSize]);
 
   return (
     <Layout>
@@ -89,6 +106,18 @@ const ProductDetailPage: NextPage = () => {
               <div className="flex items-center border-2 py-2 px-3 rounded-2xl">
                 <i className='bx bxs-purchase-tag-alt' ></i>
                 <input className="pl-2 outline-none border-none w-full text-start" type="number" name="" id="" placeholder="Price" value={price} onChange={e => setPrice(parseFloat(e.target.value))} />
+              </div>
+              <div className="flex items-center border-2 py-2 px-3 rounded-2xl mt-[20px]">
+                <Select
+                  defaultValue={_defaultSize}
+                  value={sizeOptions.filter(item => size.indexOf(item.value) >=0)}
+                  isMulti
+                  name="colors"
+                  options={sizeOptions}
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                  onChange={value => setSize(value.map((values) => values.value))}
+                />
               </div>
               <button
                 className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"

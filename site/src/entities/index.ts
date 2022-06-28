@@ -9,6 +9,7 @@ export interface Product {
   price: number;
   image: string;
   description: string;
+  size: string[];
 }; 
 
 export interface User {
@@ -32,6 +33,7 @@ export interface Order {
   quantities: number[]; 
   address: string; 
   phoneNumber: string; 
+  date: string; 
 };
 
 export interface CartItem {
@@ -51,4 +53,5 @@ export interface OrderRow {
   phoneNumber: string; 
   address: string; 
   totalPrice: number;
+  date: string;
 };
