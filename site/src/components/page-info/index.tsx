@@ -9,12 +9,12 @@ const PageIntro = () => {
   const slideData = useMemo(() => {
     return [
       {
-        title: 'Get summer collection for beach ?',
-        image: 'https://im.uniqlo.com/global-cms/spa/resb50ffdad35a8637d3445ba14f74a9343fr.jpg',
+        title: 'Comfortable home wearing',
+        image: 'https://static.nike.com/a/images/f_auto/dpr_2.0,cs_srgb/w_1085,c_limit/b8d7d08d-39eb-4311-8be5-a502e89fbadc/men-s-shoes-clothing-accessories.jpg',
       },
       {
-        title: 'Comfortable home wearing',
-        image: 'https://im.uniqlo.com/global-cms/spa/rese6fd35cbb576c09db85e39757df59b85fr.jpg',
+        title: 'Get summer collection for beach ?',
+        image: 'https://static.nike.com/a/images/f_auto/dpr_2.0,cs_srgb/w_1085,c_limit/d3e27b33-dfe0-464f-b75d-2cff780d87d4/men-s-shoes-clothing-accessories.png',
       },
       {
         title: 'Comfortable home wearing',
@@ -32,7 +32,7 @@ const PageIntro = () => {
               <div className={styles['container']}>
                 <div className={styles['intro_slide']}>
                   <h2>{item.title}</h2>
-                  <a href="#" className={styles['btn-shop']}>
+                  <a href="/products" className={styles['btn-shop']}>
                     <i className='bx bx-right-arrow-alt'></i>
                     {' '}
                     Shop now

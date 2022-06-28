@@ -53,11 +53,7 @@ const Header = ({ isErrorPage }: HeaderType) => {
     })}>
       <div className={styles['container']}>
         <Link href="/">
-          <a>
-            <h1 className={styles['app-logo']}>
-              Finner-Shop
-            </h1>
-          </a>
+          <img src="/app-logo.png" className="w-[100px]"/>
         </Link>
         <nav ref={navRef} className={classnames(styles['app-nav'], {
           [styles['app-nav--open']]: menuOpen

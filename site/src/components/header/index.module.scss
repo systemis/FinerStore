@@ -50,10 +50,10 @@
   left: 0;
   z-index: 999;
   height: 65px;
-  color: #fff;
+  color: #000;
   box-shadow: none;
   transition: all 0.3s ease;
-  background-color: #000;
+  background-color: #fff;
   @include breakpoint(phone) {
     height: 100px;
   }
@@ -61,7 +61,7 @@
     &:before,
     &:after,
     span {
-      background-color: #fff;
+      background-color: #000;
     }
   }
   .container {
@@ -100,7 +100,7 @@
       }
     }
     i {
-      color: #fff;
+      color: #000;
       z-index: 10;
       transition: all 0.3s ease;
       position: relative;
@@ -151,7 +151,7 @@
       @include breakpoint(tablet-lg) {
         width: auto;
         padding: 0;
-        color: #fff;
+        color: #000;
         margin-right: 76px;
         display: inline-block;
         font-size: 14px;

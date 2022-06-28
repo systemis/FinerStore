@@ -10,7 +10,7 @@ export class NetworkProvider {
     query?: RequestPayload, 
   ): Promise<T | undefined> {
     try {
-      const data = await axios(`http://127.0.0.1:8001${url}`, {
+      const data = await axios(`https://finner-api.herokuapp.com${url}`, {
         method: query?.method || 'GET',
         params: query?.params,
         data: query?.body

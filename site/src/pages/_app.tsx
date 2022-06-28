@@ -1,4 +1,5 @@
 import '../../styles/globals.css'
+import "../../styles/profile.css";
 import 'swiper/css';
 import type { AppProps } from 'next/app'
 import Head from 'next/head';
@@ -13,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div>
       <AppProvider>
         <Head>
+          <link rel="shortcut icon" href="/favicon.ico" />
           <script src="https://cdn.tailwindcss.com" />
           <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet" />
           <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet' />
