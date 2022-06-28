@@ -40,7 +40,7 @@ const ProductsListPage: NextPage = () => {
             </form>
           </div>
           <div className="special-list row mx-0">
-            {products.map((item, index) => (
+            {products?.map((item, index) => (
               <div className="col-md-6 col-lg-4 col-xl-3 p-2" key={`product-item ${index}`}>
                 <ProductItem product={item} />
               </div>

@@ -4,22 +4,24 @@ class Order
   public $userId;
   public $productIds;
   public $quantities;
-  public $address; 
-  public $phoneNumber; 
+  public $address;
+  public $phoneNumber;
+  public $date;
 
   function __construct(
-    $userId, 
-    $productIds, 
-    $quantities, 
-    $address, 
-    $phoneNumber, 
-  )
-  {
+    $userId,
+    $productIds,
+    $quantities,
+    $address,
+    $phoneNumber,
+    $date,
+  ) {
     $this->productIds = $productIds;
     $this->quantities = $quantities;
     $this->userId = $userId;
     $this->address = $address;
     $this->phoneNumber = $phoneNumber;
+    $this->date = $date;
   }
 
   function setProductIds($productIds)
@@ -47,7 +49,7 @@ class Order
     return $this->userId;
   }
 
-  function getAddress() 
+  function getAddress()
   {
     return $this->address;
   }
@@ -57,7 +59,7 @@ class Order
     $this->address = $address;
   }
 
-  function getPhoneNumber() 
+  function getPhoneNumber()
   {
     return $this->phoneNumber;
   }
@@ -84,6 +86,9 @@ class OrderControl
         "userId" => $order->userId,
         "productIds" => $order->productIds,
         "quantities" => $order->quantities,
+        "address" => $order->address,
+        "phoneNumber" => $order->phoneNumber,
+        "date" => $order->date,
       ]]
     );
 
@@ -98,6 +103,7 @@ class OrderControl
       "quantities" => $order->quantities,
       "address" => $order->address,
       "phoneNumber" => $order->phoneNumber,
+      "date" => $order->date,
     ]);
 
     return $this->findById($result->getInsertedId());

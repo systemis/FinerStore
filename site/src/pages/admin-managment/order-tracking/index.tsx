@@ -4,6 +4,7 @@ import Layout from "../../../layouts/layout";
 import { CartAction } from "../../../actions/cart.action";
 import { OrderRow } from "../../../entities";
 import { useRouter } from "next/router";
+import moment from "moment";
 
 const OrderTrackingPage: NextPage = () => {
   const [orderRows, setOrderRows] = useState<OrderRow[]>([]);
@@ -30,6 +31,7 @@ const OrderTrackingPage: NextPage = () => {
               <th scope="col">Phone Number</th>
               <th scope="col">Address</th>
               <th scope="col">Total price</th>
+              <th scope="col">Date</th>
             </tr>
           </thead>
           <tbody>
@@ -41,6 +43,7 @@ const OrderTrackingPage: NextPage = () => {
                 <td>{item.phoneNumber}</td>
                 <td>{item.address}</td>
                 <td>{item.totalPrice}</td>
+                <td>{moment(new Date(item.date)).format("DD-MM-yyyy hh:mm")}</td>
               </tr>
             ))}
           </tbody>

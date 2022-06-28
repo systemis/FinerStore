@@ -15,6 +15,7 @@ $order = new order(
   $entityBody->quantities,
   $entityBody->address, 
   $entityBody->phoneNumber, 
+  $entityBody->date, 
 );
 
 $data = $orderControl->insertOne($order);

@@ -16,6 +16,11 @@ export class CartAction extends BaseAction {
     this.userAction = new UserAction();
   }
 
+  async deleteCart(): Promise<boolean> {
+    this.storageProvider.deleteItem(this.cardKey);
+    return true;
+  }
+
   async getCardInfo(): Promise<CartItem[]> {
     const card = await this.getCard();
     const ids = card.map((item) => item.productId);
@@ -170,6 +175,7 @@ export class CartAction extends BaseAction {
         _id: order._id.$oid,
         user: user, 
         totalPrice, 
+        date: order.date, 
       };
     }))
   }

@@ -36,7 +36,7 @@ const ShoppingCart: React.FC = () => {
   const totalAmount = useMemo(() => {
     let total = 0.
     cartInfo?.forEach((item) => {
-      total += item.product.price * item.quantity; 
+      total += item?.product?.price * item?.quantity; 
     })
     return total;
   }, [cartInfo]);
@@ -47,6 +47,7 @@ const ShoppingCart: React.FC = () => {
     }
 
     const order = await cartAction.submitCard({
+      date: new Date().toString(),
       userId: user?._id.$oid,
       address,
       phoneNumber, 
@@ -54,6 +55,8 @@ const ShoppingCart: React.FC = () => {
 
     if (order) {
       toast.success("Order added successfully");
+      cartAction.deleteCart();
+      window.location.reload();
     }
   };
 
@@ -81,7 +84,7 @@ const ShoppingCart: React.FC = () => {
                 {cartInfo?.map((item, index) => (
                   <div key={`cart-item-${index}`} className="row main align-items-center py-[15px]">
                     <div className="col-3">
-                      <img className="img-fluid" src={item.product.image} />
+                      <img className="img-fluid" src={item?.product?.image} />
                     </div>
                     <div className="col">
                       <div className="row text-muted">{item?.product?.name}</div>

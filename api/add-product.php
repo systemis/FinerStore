@@ -13,7 +13,8 @@ $product = new Product(
   $entityBody->name,
   $entityBody->image,
   $entityBody->description,
-  $entityBody->price
+  $entityBody->price,
+  $entityBody->size,
 );
 
 $data = $productControl->insertOne($product);

@@ -91,7 +91,7 @@ const ProductDetailPage: NextPage = () => {
               <br />
               {/* <p className="mt-[20px] text-[14px] font-[100]">Size:</p> */}
               <div className="grid grid-cols-3 max-w-[80%]">
-                {["Small", "Medium", "Large", "XL", "XXL"].map((item, index) => (
+                {product?.size?.map((item, index) => (
                   <div className="py-[10px] pr-[10px]" key={"size-item-" + index}>
                     <div
                       onClick={() => setProductSize(item)}

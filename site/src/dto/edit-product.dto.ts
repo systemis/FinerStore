@@ -4,4 +4,5 @@ export type EditProductDto = {
   price: number;
   image: string;
   description: string;
+  size: string[]; 
 }; 
