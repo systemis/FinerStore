@@ -8,6 +8,8 @@ import { ProductAction } from "../../actions/product.action";
 import { CartAction } from "../../actions/cart.action";
 import { toast } from "react-toastify";
 import classnames from "classnames";
+import { useApp } from "../../hooks/app.hook";
+import { use } from "passport";
 
 const ProductDetailPage: NextPage = () => {
   const router = useRouter();
@@ -15,6 +17,7 @@ const ProductDetailPage: NextPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [quantity, setQuantity] = useState<number>(1);
   const [productSize, setProductSize] = useState<string>("Small");
+  const { user } = useApp();
 
   const productAction = new ProductAction();
   const cartAction = new CartAction();
@@ -25,6 +28,7 @@ const ProductDetailPage: NextPage = () => {
   }
 
   const handleAddToCard = async () => {
+    if (!user?._id?.$oid) return
     if (!quantity) {
       return;
     }
@@ -109,8 +113,12 @@ const ProductDetailPage: NextPage = () => {
                 ))}
               </div>
               <button
-                className="rounded-[25px] px-[15px] py-[10px] bg-black mt-[10px] min-w-[150px]"
+                className={classnames("rounded-[25px] px-[15px] py-[10px] mt-[10px] min-w-[150px]", {
+                  "bg-[gray]": !user?._id?.$oid,
+                  "bg-black": user?._id?.$oid,
+                })}
                 onClick={() => handleAddToCard()}
+                disabled={!user?._id?.$oid}
               >
                 <p className="text-white">Add To Cart</p>
               </button>
