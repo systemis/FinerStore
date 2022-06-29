@@ -14,6 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div>
       <AppProvider>
         <Head>
+          <script src="/jquery.min.js"></script>
+          <script src="/jquery.validate.min.js"></script>
+          <script src="/popper.js"></script>
           <link rel="shortcut icon" href="/favicon.ico" />
           <script src="https://cdn.tailwindcss.com" />
           <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet" />
@@ -28,6 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
           <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400&display=swap" rel="stylesheet" />
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 
         </Head>
         <Component {...pageProps} />
