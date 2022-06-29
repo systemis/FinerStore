@@ -10,10 +10,11 @@ const CustomerServiceInfo: React.FC = () => {
               <img className="img-fluid card-img-top" src="//cdn.shopify.com/s/files/1/0401/6642/4738/files/collection-5.jpg?crop=center&amp;height=300&amp;v=1613215210&amp;width=600" alt="" width="600" height="300" loading="lazy" />
               <div className="card-body">
                 <h3 className="title mb-4 h4">
-                  Card with image
+                  Clock
                 </h3>
                 <div className="description rte mt-n2 mb-0 fs-6">
-                  <p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>
+                  <p>Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.
+                  </p>
                 </div>
                 <a className="btn mt-6 btn-outline-primary " href="">
                   Learn more
@@ -27,10 +28,10 @@ const CustomerServiceInfo: React.FC = () => {
               <img className="img-fluid card-img-top" src="//cdn.shopify.com/s/files/1/0401/6642/4738/files/collection-3.jpg?crop=center&amp;height=300&amp;v=1613215210&amp;width=600" alt="" width="600" height="300" loading="lazy" />
               <div className="card-body">
                 <h3 className="title mb-4 h4">
-                  Card with image
+                  Burberry Eyewear
                 </h3>
                 <div className="description rte mt-n2 mb-0 fs-6">
-                  <p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>
+                  <p>Bold silhouettes are highlighted with our logo, and sustainable styles are patterned with our iconic check feature on our men’s eyewear collection.  These lenses change color based on light. They block UV rays and act as sunglasses in the sun. At night and indoors, however, they are clear. Signature aviator metal frames are updated with colourful lenses in seasonal shades.</p>
                 </div>
                 <a className="btn mt-6 btn-outline-primary " href="">
                   Learn more
@@ -44,10 +45,10 @@ const CustomerServiceInfo: React.FC = () => {
               <img className="img-fluid card-img-top" src="//cdn.shopify.com/s/files/1/0401/6642/4738/files/collection-2.jpg?crop=center&amp;height=300&amp;v=1613215210&amp;width=600" alt="" width="600" height="300" loading="lazy" />
               <div className="card-body">
                 <h3 className="title mb-4 h4">
-                  Card with image
+                  Shoes
                 </h3>
                 <div className="description rte mt-n2 mb-0 fs-6">
-                  <p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>
+                  <p>This season sees the introduction of our new quilted leather sneakers for men. Core styles such as the Arthur are animated in deep maroon check or a birch brown pattern on boots, sandals and high-top sneakers.</p>
                 </div>
                 <a className="btn mt-6 btn-outline-primary " href="">
                   Learn more
@@ -61,10 +62,11 @@ const CustomerServiceInfo: React.FC = () => {
               <img className="img-fluid card-img-top" src="//cdn.shopify.com/s/files/1/0401/6642/4738/files/collection-4.jpg?crop=center&amp;height=300&amp;v=1613215210&amp;width=600" alt="" width="600" height="300" loading="lazy" />
               <div className="card-body">
                 <h3 className="title mb-4 h4">
-                  Card with image
+                  HATS & GLOVES
                 </h3>
                 <div className="description rte mt-n2 mb-0 fs-6">
-                  <p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>
+                  <p>The elevation of accessories continues in men’s hats and gloves with the introduction of a new visor, softly structured bucket hat and reversible cap, plus seasonal charcoal grey check and varsity-inspired logos.
+                  </p>
                 </div>
                 <a className="btn mt-6 btn-outline-primary " href="">
                   Learn more
