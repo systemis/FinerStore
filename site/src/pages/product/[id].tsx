@@ -9,7 +9,6 @@ import { CartAction } from "../../actions/cart.action";
 import { toast } from "react-toastify";
 import classnames from "classnames";
 import { useApp } from "../../hooks/app.hook";
-import { use } from "passport";
 
 const ProductDetailPage: NextPage = () => {
   const router = useRouter();
