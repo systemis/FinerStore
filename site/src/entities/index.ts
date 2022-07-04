@@ -3,6 +3,14 @@ export enum UserRole {
   admin = "USER::ROLE::ADMIN",
 };
 
+export interface Response {
+  _id: { $oid: string },
+  name: string;
+  email: string; 
+  subject: string;
+  message: string;
+}; 
+
 export interface Product {
   _id: { $oid: string },
   name: string;

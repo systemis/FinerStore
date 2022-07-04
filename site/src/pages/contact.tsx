@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NextPage } from "next";
 import Layout from "../layouts/layout";
 import { toast } from "react-toastify";
+import { ResponseAction } from "../actions/response.action";
 
 const ContactPage: NextPage = () => {
   const [name, setName] = useState("");
@@ -9,10 +10,18 @@ const ContactPage: NextPage = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSendMessageContact = () => {
+  const responseAction = new ResponseAction(); 
+
+  const handleSendMessageContact = async () => {
     if (!name || !email || !subject || !message) return;
-    toast.success("Send message successfully");
-    window.location.reload();
+    const response = await responseAction.submitResponse({
+      name, email, subject, message
+    })
+    
+    if (response) {
+      toast.success("Send message successfully");
+      window.location.reload();
+    }
   }
 
   return (
