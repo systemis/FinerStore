@@ -17,9 +17,6 @@ const ProductItem: React.FC<ProductItemProps> = ({ product: {
     <div className='w-full'>
       <div className="special-img position-relative overflow-hidden">
         <img src={image} className="w-[auto] h-[auto]" />
-        <span className="position-absolute d-flex align-items-center justify-content-center text-primary fs-4">
-          <i className="fas fa-heart"></i>
-        </span>
       </div>
       <div className="text-left">
         <p

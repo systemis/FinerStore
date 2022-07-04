@@ -64,8 +64,7 @@ const LoginPage: NextPage = () => {
                         </div>
 
                         <div className="d-grid">
-                          <button
-                            className="text-uppercase fw-bold mb-2 bg-black text-white hover:bg-[blue] hover:text-black btn-login"
+                          <button className="ui-button ui-widget ui-corner-all text-uppercase fw-bold mb-2 bg-black text-white hover:bg-[blue] hover:text-black btn-login"
                             type="submit"
                             onClick={e => {
                               e.preventDefault();
@@ -77,7 +76,7 @@ const LoginPage: NextPage = () => {
                             or
                           </p>
                           <button
-                            className="text-uppercase fw-bold mb-2 bg-[#0082ff] text-white hover:bg-[blue] hover:text-black btn-login"
+                            className="ui-button ui-widget ui-corner-all text-uppercase fw-bold mb-2 bg-[#0082ff] text-white hover:bg-[blue] hover:text-black btn-login"
                             type="submit"
                             onClick={e => {
                               e.preventDefault();

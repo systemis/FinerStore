@@ -10,7 +10,16 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, p, span, a, button {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+button {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -144,7 +153,7 @@ body {
 }
 
 .bg-image {
-  background-image: url('https://pbs.twimg.com/media/FBb5qQrVgAAWXxJ.jpg');
+  background-image: url('/login-bg.jpeg');
   background-size: cover;
   background-position: center;
 }
@@ -371,4 +380,20 @@ table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+}
+
+.contact-bg {
+  background: linear-gradient(45deg, #00dbde, #fc00ff);
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-top: 150px;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-bg {
+    height: 120vh;
+  }
 }

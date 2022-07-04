@@ -82,7 +82,7 @@ const SignUpPage: NextPage = () => {
                         </div>
                         <div className="d-grid">
                           <button
-                            className="text-uppercase fw-bold mb-2 bg-black text-white hover:bg-[blue] hover:text-black btn-login"
+                            className="ui-button ui-widget ui-corner-all  text-uppercase fw-bold mb-2 bg-black text-white hover:bg-[blue] hover:text-black btn-login"
                             type="submit"
                             onClick={e => {
                               e.preventDefault();
